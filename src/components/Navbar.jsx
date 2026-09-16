@@ -1,22 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { irsCompanyData } from '../data/irsContent';
 import { 
-  Menu, X, Phone, MessageSquare, ChevronDown, 
-  ArrowRight, Zap, Sun, Mail, MapPin, Clock 
+  Menu, X, Phone, MessageSquare, ChevronDown, ChevronRight,
+  ArrowRight, Zap, Mail, MapPin, Clock, Home, Info, 
+  FolderGit2, CheckCircle2, HelpCircle, PhoneCall
 } from 'lucide-react';
 
 export default function Navbar({ onOpenEstimateModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesDropdown, setServicesDropdown] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+
+  // Prevent background scroll when mobile drawer is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const closeMenu = () => {
     setIsOpen(false);
     setServicesDropdown(false);
+    setMobileServicesOpen(false);
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm transition-all">
-      {/* Top Contact Strip */}
+      {/* Top Contact Strip (Desktop Only) */}
       <div className="hidden md:block bg-slate-950 text-slate-400 py-1.5 px-4 sm:px-6 lg:px-8 text-[11px] border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-5">
@@ -60,11 +75,11 @@ export default function Navbar({ onOpenEstimateModal }) {
         </div>
       </div>
 
-      {/* Main Navbar - 100% Solid White */}
+      {/* Main Navbar Bar */}
       <div className="bg-white border-b border-slate-200">
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-[74px] sm:h-[80px]" aria-label="Primary">
+        <nav className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 flex items-center justify-between h-14 sm:h-16 lg:h-[76px]" aria-label="Primary">
           
-          {/* Official IRS Logo (Bigger & Prominent) */}
+          {/* Official IRS Logo */}
           <a 
             href="#home" 
             className="flex items-center gap-2 shrink-0 focus:outline-none py-1"
@@ -73,11 +88,11 @@ export default function Navbar({ onOpenEstimateModal }) {
             <img 
               src="/images/cropped-cropped-IRS-LOGO.png" 
               alt="Instant Renewable Solution Logo" 
-              className="h-11 sm:h-13 md:h-14 w-auto object-contain transition-all"
+              className="h-8 sm:h-10 lg:h-12 w-auto object-contain transition-all"
             />
           </a>
 
-          {/* Desktop Nav Links (Bigger & Crisp Font) */}
+          {/* Desktop Nav Links */}
           <ul className="hidden lg:flex items-center gap-1 xl:gap-2">
             <li>
               <a 
@@ -181,7 +196,7 @@ export default function Navbar({ onOpenEstimateModal }) {
             </li>
           </ul>
 
-          {/* Header Action Button */}
+          {/* Desktop CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={onOpenEstimateModal}
@@ -192,38 +207,199 @@ export default function Navbar({ onOpenEstimateModal }) {
             </button>
           </div>
 
-          {/* Mobile Header Actions */}
+          {/* Mobile Right Bar Actions (App Style) */}
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={onOpenEstimateModal}
-              className="px-3.5 py-1.5 rounded-lg bg-[#FFA91F] text-white text-xs font-bold shadow-sm"
+              className="px-3 py-1.5 rounded-lg bg-[#FFA91F] active:bg-[#e8970d] text-white text-xs font-bold shadow-sm active:scale-95 transition-transform flex items-center gap-1"
             >
-              Get Quote
+              <Zap className="w-3.5 h-3.5 fill-white" />
+              <span>Quote</span>
             </button>
 
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-slate-800 hover:text-amber-600"
-              aria-label="Toggle menu"
+              className="p-2 rounded-lg bg-slate-100 text-slate-800 hover:text-amber-600 active:scale-90 transition-all"
+              aria-label="Toggle mobile menu"
             >
-              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </nav>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Native App-Style Mobile Drawer & Backdrop */}
       {isOpen && (
-        <div className="lg:hidden bg-white border-t border-slate-200 px-4 py-3 space-y-1 shadow-xl max-h-[calc(100vh-60px)] overflow-y-auto">
-          <a href="#home" onClick={closeMenu} className="block px-3 py-2 text-xs font-semibold text-amber-600">Home</a>
-          <a href="#about" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">About Us</a>
-          <a href="#portfolio" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">Our Projects</a>
-          <a href="#services" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">Our Services</a>
-          <a href="#process" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">How We Work</a>
-          <a href="#faq" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">FAQs</a>
-          <a href="#contact" onClick={closeMenu} className="block px-3 py-2 text-xs font-medium text-slate-700">Contact Us</a>
+        <div className="lg:hidden fixed inset-0 z-50 flex">
+          {/* Backdrop Overlay */}
+          <div 
+            className="fixed inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity"
+            onClick={closeMenu}
+          ></div>
+
+          {/* Slide-in Drawer Container */}
+          <div className="relative ml-auto w-full max-w-xs sm:max-w-sm bg-white h-full shadow-2xl flex flex-col z-10 animate-in slide-in-from-right duration-250">
+            {/* Drawer Header */}
+            <div className="p-4 border-b border-slate-200 flex items-center justify-between bg-slate-50/80">
+              <div className="flex items-center gap-2">
+                <img 
+                  src="/images/cropped-cropped-IRS-LOGO.png" 
+                  alt="IRS Logo" 
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+              <button 
+                onClick={closeMenu}
+                className="p-2 rounded-lg bg-slate-200/80 text-slate-700 active:scale-90 transition-transform"
+                aria-label="Close menu"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Scrollable Navigation List */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-1">
+              <a 
+                href="#home" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-slate-900 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center">
+                  <Home className="w-4 h-4" />
+                </div>
+                <span>Home</span>
+              </a>
+
+              <a 
+                href="#about" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+                  <Info className="w-4 h-4" />
+                </div>
+                <span>About Us</span>
+              </a>
+
+              {/* Mobile Services Accordion */}
+              <div>
+                <button
+                  onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-amber-500/15 text-amber-700 flex items-center justify-center">
+                      <Zap className="w-4 h-4" />
+                    </div>
+                    <span>Our Services (6)</span>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform ${mobileServicesOpen ? 'rotate-180 text-amber-600' : ''}`} />
+                </button>
+
+                {mobileServicesOpen && (
+                  <div className="pl-11 pr-2 py-1 space-y-1 border-l-2 border-amber-200 ml-4 my-1">
+                    {irsCompanyData.services.map((srv) => (
+                      <a
+                        key={srv.id}
+                        href={`#${srv.id}`}
+                        onClick={closeMenu}
+                        className="block py-1.5 px-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-amber-50 hover:text-amber-800"
+                      >
+                        <span className="font-bold text-amber-700 mr-1.5">0{srv.number}.</span>
+                        {srv.title}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <a 
+                href="#portfolio" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+                  <FolderGit2 className="w-4 h-4" />
+                </div>
+                <span>Our Projects</span>
+              </a>
+
+              <a 
+                href="#process" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+                  <CheckCircle2 className="w-4 h-4" />
+                </div>
+                <span>How We Work</span>
+              </a>
+
+              <a 
+                href="#faq" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+                  <HelpCircle className="w-4 h-4" />
+                </div>
+                <span>FAQs</span>
+              </a>
+
+              <a 
+                href="#contact" 
+                onClick={closeMenu} 
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-semibold text-slate-800 hover:bg-amber-50 hover:text-amber-700 text-sm transition-colors"
+              >
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-700 flex items-center justify-center">
+                  <PhoneCall className="w-4 h-4" />
+                </div>
+                <span>Contact Us</span>
+              </a>
+            </div>
+
+            {/* Mobile Drawer Bottom Quick Contacts & CTA */}
+            <div className="p-4 border-t border-slate-200 bg-slate-50 space-y-2.5">
+              <div className="grid grid-cols-2 gap-2">
+                <a
+                  href={`tel:${irsCompanyData.contact.phoneClean}`}
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 text-xs font-bold active:scale-95 transition-transform"
+                >
+                  <Phone className="w-3.5 h-3.5 text-amber-600" />
+                  <span>Call Us</span>
+                </a>
+
+                <a
+                  href={irsCompanyData.contact.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-1.5 py-2 px-2.5 rounded-xl bg-slate-900 text-white text-xs font-bold active:scale-95 transition-transform"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+
+              <button
+                onClick={() => {
+                  closeMenu();
+                  onOpenEstimateModal();
+                }}
+                className="w-full py-3 rounded-xl bg-[#FFA91F] text-white font-bold text-xs shadow-md active:scale-95 transition-transform flex items-center justify-center gap-2"
+              >
+                <Zap className="w-4 h-4 fill-white" />
+                <span>Get Free Project Quote</span>
+              </button>
+
+              <p className="text-[10px] text-center text-slate-400 pt-1">
+                Surat HQ • Gujarat • India &amp; Middle East
+              </p>
+            </div>
+
+          </div>
         </div>
       )}
     </header>
   );
 }
+

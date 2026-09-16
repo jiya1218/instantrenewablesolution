@@ -48,7 +48,7 @@ export default function App() {
       <Navbar onOpenEstimateModal={handleOpenEstimateModal} />
 
       {/* Main Page Content - 100% IRS Content & Solar Engineering Services */}
-      <main className="flex-1">
+      <main className="flex-1 pb-20 lg:pb-0">
         {/* 1. Hero Section */}
         <Hero onOpenEstimateModal={handleOpenEstimateModal} />
 
