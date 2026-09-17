@@ -6,38 +6,40 @@ const valueIcons = [ShieldCheck, Zap, Award, Target, Users];
 
 export default function CoreValues() {
   return (
-    <section id="values" className="py-16 sm:py-20 bg-white border-t border-slate-100">
+    <section id="values" className="py-16 sm:py-24 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-12 max-w-3xl mx-auto">
-          <div className="inline-block px-3 py-1 rounded-md bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider mb-2.5">
-            Core Values
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight font-display mb-3">
-            Our 5 Guiding Core Values
+        <div className="text-center mb-12 sm:mb-14 max-w-3xl mx-auto">
+          <p className="section-label">Core Principles</p>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1A202C] tracking-tight font-display mb-3">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#07427B] tracking-tight font-display mb-3">
+            Our 5 Guiding Engineering Values
           </h2>
           <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
             The fundamental engineering principles that drive our high accuracy, turnaround speed, and 98% client retention.
           </p>
         </div>
 
-        {/* 5 Core Values Grid (3 top, 2 bottom centered) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {/* 5 Core Values Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {irsCompanyData.aboutUs.coreValues.map((val, idx) => {
             const Icon = valueIcons[idx % valueIcons.length];
+            const iconBg = idx % 2 === 0 ? 'bg-[#07427B]/10 text-[#07427B] group-hover:bg-[#07427B]' : 'bg-[#59BD4B]/10 text-[#59BD4B] group-hover:bg-[#59BD4B]';
+
             return (
               <div 
                 key={idx}
-                className={`p-6 sm:p-7 rounded-2xl bg-white border border-slate-200 hover:border-amber-400 hover:shadow-lg transition-all duration-300 flex flex-col text-center items-center ${
-                  idx === 3 ? 'lg:col-start-1 lg:translate-x-1/2' : idx === 4 ? 'lg:col-start-2 lg:translate-x-1/2' : ''
-                }`}
+                className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200 hover:border-[#149C68]/40 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col text-center items-center group"
+                className="p-6 sm:p-7 rounded-xl bg-white border border-slate-200 hover:border-[#17BAF0]/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col text-center items-center group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center mb-4 border border-amber-200/80 shadow-2xs">
-                  <Icon className="w-7 h-7" />
+                <div className="w-12 h-12 rounded-xl bg-[#149C68]/10 text-[#149C68] flex items-center justify-center mb-4 group-hover:bg-[#149C68] group-hover:text-white transition-colors">
+                <div className={`w-12 h-12 rounded-xl ${iconBg} group-hover:text-white flex items-center justify-center mb-4 transition-colors`}>
+                  <Icon className="w-6 h-6" />
                 </div>
 
-                <h3 className="text-base sm:text-lg font-bold text-slate-900 mb-2 font-display">
+                <h3 className="text-base sm:text-lg font-bold text-[#1A202C] mb-2 font-display group-hover:text-[#149C68] transition-colors">
+                <h3 className="text-base sm:text-lg font-bold text-[#07427B] mb-2 font-display group-hover:text-[#17BAF0] transition-colors">
                   {val.name}
                 </h3>
 
@@ -53,4 +55,3 @@ export default function CoreValues() {
     </section>
   );
 }
-
