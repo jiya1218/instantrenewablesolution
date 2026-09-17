@@ -3,22 +3,12 @@ import { Link } from "react-router-dom";
 import { 
   ArrowRight, 
   CheckCircle2, 
-  Phone, 
   Mail, 
-  MapPin, 
   MessageSquare, 
   Send, 
-  ShieldCheck, 
   Sparkles, 
   ChevronDown,
-  LayoutGrid,
-  SlidersHorizontal,
   ChevronRight
-  ChevronRight,
-  Zap,
-  Cpu,
-  Layers,
-  Award
 } from "lucide-react";
 import { irsCompanyData, irsAssets } from "../data/irsContent";
 
@@ -62,10 +52,6 @@ export default function HomePage({ onOpenEstimate }) {
   return (
     <div className="bg-white min-h-screen text-slate-800">
       
-      {/* 1. HERO SECTION (APP COMPACT MOBILE + DESKTOP HERO) */}
-      <section className="relative bg-[#F4F8FC] border-b border-slate-200 py-8 sm:py-16 lg:py-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
       {/* 1. HERO SECTION */}
       <section className="relative bg-gradient-to-b from-[#F4F8FC] via-white to-slate-50 border-b border-slate-200 overflow-hidden">
         
@@ -181,46 +167,36 @@ export default function HomePage({ onOpenEstimate }) {
           <div className="grid grid-cols-12 gap-12 items-center">
             
             {/* Left Column: Hero Content */}
-            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
             <div className="col-span-7 space-y-6">
               
               {/* Badge */}
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-bold tracking-wide">
-                <Sparkles className="w-3.5 h-3.5 text-[#16A34A]" />
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold tracking-wide">
                 <Sparkles className="w-4 h-4 text-[#16A34A]" />
                 <span>Outsourced Solar Design & Engineering Support</span>
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#07427B] font-display tracking-tight leading-tight">
               <h1 className="text-4xl lg:text-5xl font-extrabold text-[#07427B] font-display tracking-tight leading-tight">
                 Solar Design & Engineering Support for{" "}
                 <span className="text-[#16A34A] font-black">EPC Companies</span>
               </h1>
 
               {/* Subheadline from IRS live site */}
-              <p className="text-xs sm:text-base lg:text-lg text-slate-700 leading-relaxed max-w-2xl">
               <p className="text-base lg:text-lg text-slate-700 leading-relaxed max-w-2xl">
                 IRS operates as an extension of your engineering team. We help Solar EPC companies manage peak workloads, shorten design cycles and deliver coordinated engineering packages without increasing permanent headcount.
               </p>
 
               {/* Featured IRS Hero Visual Badge & Illustration */}
-              <div className="p-3 sm:p-4 rounded-xl bg-white border border-slate-200 shadow-xs flex items-center gap-3 sm:gap-4">
               <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs flex items-center gap-4">
                 <img
                   src={irsAssets.heroIllustration}
                   alt="IRS Solar Design Team Illustration"
-                  className="w-20 sm:w-32 h-auto object-contain flex-shrink-0"
                   className="w-32 h-auto object-contain flex-shrink-0"
                 />
                 <div>
-                  <p className="text-xs sm:text-sm font-bold text-[#07427B] leading-snug">
                   <p className="text-sm font-bold text-[#07427B]">
                     Expand Your Engineering Capacity Without Expanding Your Team
                   </p>
-                  <p className="text-[10px] sm:text-xs text-slate-600 mt-0.5 leading-snug">
-                    Commercial, industrial, rooftop, ground-mounted and utility-scale solar projects.
                   <p className="text-xs text-slate-600 mt-0.5">
                     Designed for commercial, industrial, rooftop, ground-mounted and utility-scale solar projects.
                   </p>
@@ -228,11 +204,9 @@ export default function HomePage({ onOpenEstimate }) {
               </div>
 
               {/* CTA Buttons */}
-              <div className="flex flex-wrap items-center gap-2.5 sm:gap-4 pt-1">
               <div className="flex items-center gap-4 pt-1">
                 <button
                   onClick={onOpenEstimate}
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#07427B] hover:bg-[#042342] text-white font-bold text-xs sm:text-sm shadow-md transition-all active:scale-95"
                   className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-[#07427B] hover:bg-[#042342] text-white font-bold text-sm shadow-md transition-all active:scale-95"
                 >
                   <span>Get a Free Estimate</span>
@@ -240,38 +214,26 @@ export default function HomePage({ onOpenEstimate }) {
                 </button>
                 <Link
                   to="/services"
-                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white hover:bg-slate-50 text-[#07427B] font-bold text-xs sm:text-sm border border-slate-300 transition-colors shadow-xs"
                   className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white hover:bg-slate-50 text-[#07427B] font-bold text-sm border border-slate-300 transition-colors shadow-xs"
                 >
-                  <span>Explore 6 Services</span>
                   <span>Explore 6 Core Services</span>
                 </Link>
               </div>
 
-              {/* Trust Indicators (Compact 2x2 on mobile, 4 in row on desktop) */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 pt-2 sm:pt-3 border-t border-slate-200 text-[11px] sm:text-xs text-slate-700 font-semibold">
-                <div className="flex items-center gap-1.5 bg-white sm:bg-transparent p-2 sm:p-0 rounded-lg border sm:border-0 border-slate-200/60">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
               {/* Trust Indicators */}
               <div className="grid grid-cols-4 gap-3 pt-3 border-t border-slate-200 text-xs text-slate-700 font-semibold">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
                   <span>CEIG Ready</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white sm:bg-transparent p-2 sm:p-0 rounded-lg border sm:border-0 border-slate-200/60">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
                   <span>STAAD Pro MMS</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white sm:bg-transparent p-2 sm:p-0 rounded-lg border sm:border-0 border-slate-200/60">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
                   <span>PVsyst 8760 Yield</span>
                 </div>
-                <div className="flex items-center gap-1.5 bg-white sm:bg-transparent p-2 sm:p-0 rounded-lg border sm:border-0 border-slate-200/60">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#16A34A] flex-shrink-0" />
                 <div className="flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-[#16A34A] flex-shrink-0" />
                   <span>Detailed BOQs</span>
@@ -280,39 +242,27 @@ export default function HomePage({ onOpenEstimate }) {
             </div>
 
             {/* Right Column: Instant Project Inquiry Box */}
-            <div className="lg:col-span-5">
-              <div className="bg-white rounded-2xl p-4 sm:p-7 shadow-lg border border-slate-200 text-slate-800">
-                <div className="border-b border-slate-100 pb-2.5 mb-3">
-                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider mb-1">
             <div className="col-span-5">
               <div className="bg-white rounded-3xl p-7 shadow-xl border border-slate-200 text-slate-800">
                 <div className="border-b border-slate-100 pb-3 mb-4">
                   <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-[11px] font-bold uppercase tracking-wider mb-1">
                     Direct Engineering Desk
                   </div>
-                  <h3 className="text-base sm:text-xl font-bold font-display text-[#07427B] leading-tight">
                   <h3 className="text-xl font-bold font-display text-[#07427B]">
                     Need Engineering Support for an Active Solar Project?
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                    Share requirements for a fast scope review & estimate.
                   <p className="text-xs text-slate-500 mt-1">
                     Fill the form below to receive a personalized estimate & scope review.
                   </p>
                 </div>
 
                 {heroSubmitted ? (
-                  <div className="py-6 text-center space-y-3">
-                    <div className="w-10 h-10 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
-                      <CheckCircle2 className="w-6 h-6" />
                   <div className="py-8 text-center space-y-3">
                     <div className="w-12 h-12 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
-                    <h4 className="text-base font-bold text-[#07427B]">Proposal Request Sent!</h4>
                     <h4 className="text-lg font-bold text-[#07427B]">Proposal Request Sent!</h4>
                     <p className="text-xs text-slate-600">
-                      Our engineers in Surat will review your specifications and contact you right away.
                       Our solar design engineers in Surat will review your specifications and contact you right away.
                     </p>
                     <button
@@ -324,12 +274,9 @@ export default function HomePage({ onOpenEstimate }) {
                     </button>
                   </div>
                 ) : (
-                  <form onSubmit={handleHeroSubmit} className="space-y-2.5">
-                    <div className="grid grid-cols-2 gap-2.5">
                   <form onSubmit={handleHeroSubmit} className="space-y-3">
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                           Name <span className="text-rose-500">*</span>
                         </label>
@@ -339,12 +286,10 @@ export default function HomePage({ onOpenEstimate }) {
                           value={heroForm.name}
                           onChange={(e) => setHeroForm({ ...heroForm, name: e.target.value })}
                           placeholder="Your Name"
-                          className="w-full px-2.5 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                           className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                         />
                       </div>
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                           Company
                         </label>
@@ -353,16 +298,13 @@ export default function HomePage({ onOpenEstimate }) {
                           value={heroForm.company}
                           onChange={(e) => setHeroForm({ ...heroForm, company: e.target.value })}
                           placeholder="Company Name"
-                          className="w-full px-2.5 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                           className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2.5">
                     <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                           Phone <span className="text-rose-500">*</span>
                         </label>
@@ -372,12 +314,10 @@ export default function HomePage({ onOpenEstimate }) {
                           value={heroForm.phone}
                           onChange={(e) => setHeroForm({ ...heroForm, phone: e.target.value })}
                           placeholder="+91 98765 43210"
-                          className="w-full px-2.5 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                           className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                         />
                       </div>
                       <div>
-                        <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                           Email <span className="text-rose-500">*</span>
                         </label>
@@ -387,7 +327,6 @@ export default function HomePage({ onOpenEstimate }) {
                           value={heroForm.email}
                           onChange={(e) => setHeroForm({ ...heroForm, email: e.target.value })}
                           placeholder="engineer@company.com"
-                          className="w-full px-2.5 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                           className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                         />
                       </div>
@@ -395,8 +334,6 @@ export default function HomePage({ onOpenEstimate }) {
 
                     {/* Subject field */}
                     <div>
-                      <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
-                        Service Requirement <span className="text-rose-500">*</span>
                       <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         Subject <span className="text-rose-500">*</span>
                       </label>
@@ -404,22 +341,18 @@ export default function HomePage({ onOpenEstimate }) {
                         <select
                           value={heroForm.subject}
                           onChange={(e) => setHeroForm({ ...heroForm, subject: e.target.value })}
-                          className="w-full px-2.5 py-1.5 sm:py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white appearance-none pr-8"
                           className="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white appearance-none pr-8"
                         >
                           <option value="predesign">predesign</option>
                           <option value="ground mound">ground mound</option>
                           <option value="mega project">mega project</option>
                         </select>
-                        <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2 pointer-events-none" />
                         <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-2.5 pointer-events-none" />
                       </div>
                     </div>
 
                     {/* Message */}
                     <div>
-                      <label className="block text-[10px] font-bold text-slate-700 uppercase tracking-wider mb-1">
-                        Project Scope / Capacity
                       <label className="block text-[11px] font-bold text-slate-700 uppercase tracking-wider mb-1">
                         Message / Project Scope
                       </label>
@@ -427,17 +360,14 @@ export default function HomePage({ onOpenEstimate }) {
                         rows={2}
                         value={heroForm.message}
                         onChange={(e) => setHeroForm({ ...heroForm, message: e.target.value })}
-                        placeholder="e.g. 2 MW ground mount layout, CEIG SLD & BOQ..."
                         placeholder="e.g. 2 MW ground mount layout, CEIG SLD & BOQ required..."
                         className="w-full p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#07427B] focus:bg-white"
                       />
                     </div>
 
-                    <div className="pt-1 space-y-1.5">
                     <div className="pt-1 space-y-2">
                       <button
                         type="submit"
-                        className="w-full py-2.5 px-4 rounded-xl bg-[#07427B] hover:bg-[#042342] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
                         className="w-full py-2.5 px-4 rounded-xl bg-[#07427B] hover:bg-[#042342] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-md transition-colors"
                       >
                         <Send className="w-3.5 h-3.5 text-[#17BAF0]" />
@@ -462,7 +392,6 @@ export default function HomePage({ onOpenEstimate }) {
         </div>
       </section>
 
-      {/* 2. STATS BAR (COMPACT 2x2 GRID ON MOBILE, 4 IN ROW ON DESKTOP) */}
       {/* 2. STATS BAR (COMPACT 2x2 ON MOBILE, 4 IN ROW ON DESKTOP) */}
       <section className="bg-white border-b border-slate-200 py-6 sm:py-10">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
@@ -487,7 +416,6 @@ export default function HomePage({ onOpenEstimate }) {
         </div>
       </section>
 
-      {/* 3. OUR SERVICES (BEAUTIFUL 2-COLUMN APP-GRID ON MOBILE, 3-COLUMN ON DESKTOP) */}
       {/* 3. OUR SERVICES (2-COLUMN APP-GRID ON MOBILE, 3-COLUMN ON DESKTOP) */}
       <section className="py-10 sm:py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
@@ -512,7 +440,6 @@ export default function HomePage({ onOpenEstimate }) {
                 className="bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-slate-200 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Card Image Container (Compact on mobile, spacious on desktop) */}
                   {/* Card Image Container */}
                   <div className="bg-slate-50 p-2 sm:p-4 border-b border-slate-100 h-28 sm:h-52 flex items-center justify-center overflow-hidden">
                     <img
@@ -567,7 +494,6 @@ export default function HomePage({ onOpenEstimate }) {
       </section>
 
       {/* 4. OUR WORKING PROCESS (2x2 GRID ON MOBILE, 3 IN ROW ON DESKTOP) */}
-      {/* 4. OUR WORKING PROCESS */}
       <section className="py-10 sm:py-20 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-12 space-y-2 sm:space-y-3">
@@ -587,7 +513,6 @@ export default function HomePage({ onOpenEstimate }) {
               <div
                 key={step.step}
                 className="bg-slate-50 rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-slate-200 shadow-xs hover:shadow-md transition-all hover:border-[#16A34A] flex flex-col justify-between"
-                className="bg-slate-50 rounded-xl sm:rounded-2xl p-3 sm:p-6 border border-slate-200 shadow-xs flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center justify-between mb-1.5 sm:mb-3">
